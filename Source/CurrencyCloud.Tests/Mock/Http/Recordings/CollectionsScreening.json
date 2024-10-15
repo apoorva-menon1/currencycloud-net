@@ -1,0 +1,87 @@
+[
+  {
+    "name": "SetUp",
+    "requests": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/v2/authenticate/api",
+          "headers": {
+            "User-Agent": "CurrencyCloudSDK/2.0 .NET/6.6.0"
+          },
+          "body": "?login_id=development@currencycloud.com&api_key=deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Date": "Mon, 14 Oct 2024 12:34:56 GMT",
+            "Content-Type": "application/json;charset=utf-8",
+            "X-Request-Id": "2910007469756093752"
+          },
+          "body": {
+            "auth_token": "034d23d24490718e8766853e14d480b7"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "TearDown",
+    "requests": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/v2/authenticate/close_session",
+          "headers": {
+            "X-Auth-Token": "034d23d24490718e8766853e14d480b7",
+            "User-Agent": "CurrencyCloudSDK/2.0 .NET/6.6.0"
+
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Date": "Mon, 14 Oct 2024 12:34:56 GMT",
+            "Content-Type": "application/json;charset=utf-8",
+            "X-Request-Id": "2910007472633409851"
+          },
+          "body": {
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "CompleteScreening",
+    "requests": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/v2/collections_screening/272d42b9-9b97-4407-ac08-d75cd067cd12/complete",
+          "body": "?accepted=true&reason=Accepted",
+          "headers": {
+            "X-Auth-Token": "034d23d24490718e8766853e14d480b7",
+            "User-Agent": "CurrencyCloudSDK/2.0 .NET/6.6.0"
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+            "Date": "Mon, 14 Oct 2024 12:34:56 GMT",
+            "Content-Type": "application/json;charset=utf-8",
+            "X-Request-Id": "2910007472633409851"
+          },
+          "body": {
+            "transaction_id": "272d42b9-9b97-4407-ac08-d75cd067cd12",
+            "account_id": "f2ea2099-306e-47a6-8fb0-123b304e601c",
+            "house_account_id": "f276146d-0a35-4df9-b9d7-fff869fadd8e",
+            "reason": {
+              "reason": "Accepted",
+              "accepted": true
+            }
+          }
+        }
+      }
+    ]
+  }
+]

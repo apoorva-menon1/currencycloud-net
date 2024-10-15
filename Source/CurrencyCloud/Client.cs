@@ -596,6 +596,36 @@ namespace CurrencyCloud
 
         #endregion
 
+        #region CollectionsScreening
+
+        /// <summary>
+        /// Completes the client screening for a transactionId
+        /// </summary>
+        /// <param name="transactionId">Id of the transaction for which client screening needs to be completed. </param>
+        /// <param name="accepted">bool field where accepted is true if client screening passes otherwise false.</param>
+        /// <param name="reason">States The reason of acceptance/rejection.</param>
+        /// <returns>Asynchronous task, which completes screening of a transaction.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when client is not initialized.</exception>
+        /// <exception cref="ApiException">Thrown when API call fails.</exception>
+        public async Task<CollectionsScreening> CollectionsScreeningCompleteAsync(string transactionId, bool accepted,
+            string reason)
+        {
+            if (string.IsNullOrEmpty(transactionId))
+                throw new ArgumentException("TransactionId can not be null");
+            if (string.IsNullOrEmpty(accepted))
+                throw new ArgumentException("Accepted can not be null");
+            if (string.IsNullOrEmpty(reason))
+                throw new ArgumentException("Reason can not be null");
+            var paramsObj = new ParamsObject();
+            paramsObj.AddNotNull(true, accepted);
+            paramsObj.AddNotNull("Accepted", reason);
+            return await RequestAsync<WithdrawalAccountFunds>("/v2/collections_screening/"+transactionId+"/complete",
+                HttpMethod.Post, paramsObj);
+        }
+
+        #endregion
+    }
+
         #region Contacts
 
         /// <summary>
