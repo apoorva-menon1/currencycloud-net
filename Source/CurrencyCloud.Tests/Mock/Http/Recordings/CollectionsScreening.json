@@ -75,7 +75,7 @@
             "transaction_id": "272d42b9-9b97-4407-ac08-d75cd067cd12",
             "account_id": "f2ea2099-306e-47a6-8fb0-123b304e601c",
             "house_account_id": "f276146d-0a35-4df9-b9d7-fff869fadd8e",
-            "reason": {
+            "result": {
               "reason": "Accepted",
               "accepted": true
             }
